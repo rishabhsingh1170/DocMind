@@ -10,7 +10,7 @@ function FinalCtaSection() {
             Ready to automate your corporate knowledge?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-indigo-100">
-            Launch DocuMind AI to reduce support overhead, prevent compliance
+            Launch DocMind AI to reduce support overhead, prevent compliance
             mistakes, and empower every employee with secure instant answers.
           </p>
 

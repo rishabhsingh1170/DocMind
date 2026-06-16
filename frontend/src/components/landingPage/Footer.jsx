@@ -10,7 +10,7 @@ function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white/80 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-slate-500 sm:flex-row">
-        <p>&copy; {currentYear} DocuMind AI. All rights reserved.</p>
+        <p>&copy; {currentYear} DocMind AI. All rights reserved.</p>
         <div className="flex gap-6">
           {footerLinks.map((link) => (
             <a

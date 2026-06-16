@@ -152,9 +152,9 @@ export default function SignupPage() {
           Enterprise Secure Access
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          {step === "initial" && "Create your DocuMind AI workspace"}
+          {step === "initial" && "Create your DocMind AI workspace"}
           {step === "otp" && "Verify your email"}
-          {step === "success" && "Welcome to DocuMind AI"}
+          {step === "success" && "Welcome to DocMind AI"}
         </h1>
         <p className="max-w-lg text-sm text-slate-500 sm:text-base">
           {step === "initial" &&

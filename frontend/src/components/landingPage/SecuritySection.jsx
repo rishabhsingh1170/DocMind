@@ -15,7 +15,7 @@ function SecuritySection() {
               Your Data is not the product.
             </h2>
             <p className="mt-4 max-w-xl text-slate-300">
-              DocuMind AI is designed for organizations that need secure data
+              DocMind AI is designed for organizations that need secure data
               handling and answers supported by references.
             </p>
 

@@ -12,7 +12,7 @@ function Navbar() {
             <Lock className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full bg-white p-0.5 text-indigo-700" />
           </div>
           <span className="text-lg font-extrabold tracking-tight text-slate-900">
-            DocuMind AI
+            DocMind AI
           </span>
         </a>
 
