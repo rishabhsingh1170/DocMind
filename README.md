@@ -1,4 +1,4 @@
-# Knowledge Enterprise Automation
+d# Knowledge Enterprise Automation
 
 A secure multi-tenant enterprise knowledge assistant built with a FastAPI backend, a React/Vite frontend, MongoDB, ChromaDB, Cloudinary, and Mistral-powered RAG.
 
