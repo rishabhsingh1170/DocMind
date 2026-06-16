@@ -3,6 +3,8 @@ Main FastAPI Application Entry Point
 Initializes the FastAPI app, connects to MongoDB, and registers all route routers.
 """
 
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -16,6 +18,7 @@ except ModuleNotFoundError:
     from config import CORS_ALLOW_ORIGINS, CORS_ALLOW_CREDENTIALS
 
 app = FastAPI(title="Enterprise Knowledge Automation API", version="1.0.0")
+FRONTEND_DIST_DIR = Path(__file__).resolve().parents[1] / "frontend" / "dist"
 
 # Enable CORS for local frontend apps (Vite/React).
 app.add_middleware(
@@ -34,4 +37,4 @@ app.include_router(document.router, prefix="/api")
 app.include_router(chat.router, prefix="/api")
 
 # React build
-app.mount("/", StaticFiles(directory="../frontend/dist", html=True), name="frontend")
+app.mount("/", StaticFiles(directory=str(FRONTEND_DIST_DIR), html=True), name="frontend")

@@ -81,7 +81,7 @@ npm install
 3. Create or update `frontend/.env` if you want to override the API base URL:
 
 ```env
-VITE_API_BASE_URL=http://127.0.0.1:8000
+VITE_API_BASE_URL=http://127.0.0.1:8000/api
 ```
 
 4. Start the frontend:
@@ -91,6 +91,28 @@ npm run dev
 ```
 
 The app starts on `http://127.0.0.1:5173` by default.
+
+## Single-Service Docker Deployment
+
+Build one image that compiles the React app and serves it from FastAPI:
+
+```powershell
+docker build -t knowledge-enterprise-automation .
+```
+
+Run the container:
+
+```powershell
+docker run --env-file backend/.env -p 8000:8000 knowledge-enterprise-automation
+```
+
+For persistent local ChromaDB storage, mount a volume:
+
+```powershell
+docker run --env-file backend/.env -p 8000:8000 -v ${PWD}/chroma_db:/app/chroma_db knowledge-enterprise-automation
+```
+
+The frontend is built with `VITE_API_BASE_URL=/api`, so the browser calls the same deployed service for API requests.
 
 ## Common Pages
 
