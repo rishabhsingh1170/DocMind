@@ -94,25 +94,51 @@ The app starts on `http://127.0.0.1:5173` by default.
 
 ## Single-Service Docker Deployment
 
-Build one image that compiles the React app and serves it from FastAPI:
+This project can run as one Docker service. The Dockerfile builds the React/Vite frontend first, copies the production assets into the Python image, and serves both `/api/*` and the frontend from FastAPI on one port.
+
+1. Build the image from the repository root:
 
 ```powershell
 docker build -t knowledge-enterprise-automation .
 ```
 
-Run the container:
+2. Run the container with backend environment variables:
 
 ```powershell
 docker run --env-file backend/.env -p 8000:8000 knowledge-enterprise-automation
 ```
 
-For persistent local ChromaDB storage, mount a volume:
+3. Open the app:
+
+```text
+http://localhost:8000
+```
+
+For persistent local ChromaDB storage, mount `chroma_db` into the container:
 
 ```powershell
 docker run --env-file backend/.env -p 8000:8000 -v ${PWD}/chroma_db:/app/chroma_db knowledge-enterprise-automation
 ```
 
-The frontend is built with `VITE_API_BASE_URL=/api`, so the browser calls the same deployed service for API requests.
+Useful options:
+
+```powershell
+# Use a different host port
+docker run --env-file backend/.env -p 8080:8000 knowledge-enterprise-automation
+
+# Use a platform-provided port inside the container
+docker run --env-file backend/.env -e PORT=8080 -p 8080:8080 knowledge-enterprise-automation
+
+# Rebuild without Docker cache
+docker build --no-cache -t knowledge-enterprise-automation .
+```
+
+Deployment notes:
+
+- Do not bake `.env` files into the image. Pass secrets through `--env-file`, platform environment variables, or your hosting provider's secrets manager.
+- The frontend is built with `VITE_API_BASE_URL=/api`, so the browser calls the same deployed service for API requests.
+- The container expects MongoDB, Cloudinary, SMTP, and Mistral values in the runtime environment.
+- `CHROMA_DB_PATH` defaults to `/app/chroma_db`; mount a volume there if you want indexed document chunks to survive container restarts.
 
 ## Common Pages
 
