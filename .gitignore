@@ -1,16 +1,27 @@
-# Ignore vector database
-chroma_db/
-chroma/
-
-# PDFs
-*.pdf
-
 # Python
-venv/
 __pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+myvenv/
+venv/
+.venv/
+backend/myvenv/
 
 # Node
+node_modules/
 frontend/node_modules/
+
+# Build files
+frontend/dist/
 
 # Environment variables
 .env
+
+# ChromaDB
+chroma_db/
+
+# OS
+.DS_Store
+Thumbs.db
