@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Push to Hugging Face Space
         env:
@@ -22,4 +24,4 @@ jobs:
 
           git remote add hf https://user:${HF_TOKEN}@huggingface.co/spaces/rishabh1170/DocMind
 
-          git push hf HEAD:main --force
+          git push hf main --force
