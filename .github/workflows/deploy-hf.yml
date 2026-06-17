@@ -15,11 +15,11 @@ jobs:
 
       - name: Push to Hugging Face Space
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_TOKEN: ${{ secrets.DOCMIND_GITHUB_DEPLOY }}
         run: |
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
 
-          git remote add hf https://rishabh1170:${HF_TOKEN}@huggingface.co/spaces/rishabh1170/DocMind
+          git remote add hf https://user:${HF_TOKEN}@huggingface.co/spaces/rishabh1170/DocMind
 
-          git push --force hf main
+          git push hf HEAD:main --force
