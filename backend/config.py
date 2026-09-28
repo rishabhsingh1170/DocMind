@@ -28,8 +28,9 @@ OTP_EXPIRATION_MINUTES = int(os.getenv("OTP_EXPIRATION_MINUTES", "10"))
 
 # RAG / LLM Configuration
 MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
-MISTRAL_CHAT_MODEL = os.getenv("MISTRAL_CHAT_MODEL", "mistral-small-latest")
 MISTRAL_EMBEDDING_MODEL = os.getenv("MISTRAL_EMBEDDING_MODEL", "mistral-embed")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_CHAT_MODEL = os.getenv("GROQ_CHAT_MODEL", "llama-3.3-70b-versatile")
 CHROMA_DB_PATH = os.getenv("CHROMA_DB_PATH", "chroma_db")
 CHROMA_COLLECTION_NAME = os.getenv("CHROMA_COLLECTION_NAME", "company_policy_chunks")
 RAG_MAX_CONTEXT_CHUNKS = int(os.getenv("RAG_MAX_CONTEXT_CHUNKS", "4"))

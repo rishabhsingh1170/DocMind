@@ -5,6 +5,7 @@ cloudinary==1.44.1
 email-validator==2.3.0
 fastapi==0.135.2
 langchain-core==1.2.17
+langchain-groq==0.3.2
 langchain-mistralai==1.1.1
 pydantic==2.12.5
 PyJWT==2.12.1

@@ -8,9 +8,10 @@ pinned: false
 license: mit
 short_description: Knowledge-Enterprise-Automantion using RAG
 ---
+
 # Knowledge Enterprise Automation
 
-A secure multi-tenant enterprise knowledge assistant built with a FastAPI backend, a React/Vite frontend, MongoDB, ChromaDB, Cloudinary, and Mistral-powered RAG.
+A secure multi-tenant enterprise knowledge assistant built with a FastAPI backend, a React/Vite frontend, MongoDB, ChromaDB, Cloudinary, Mistral embeddings, and Gemini-powered chat.
 
 ## Overview
 
@@ -30,7 +31,7 @@ The project lets admins upload company documents, manage access, and provide emp
 - Role-based access for admins and employees
 - Secure document upload and storage
 - Tenant-scoped retrieval with ChromaDB
-- Grounded chat responses using Mistral
+- Grounded chat responses using Gemini
 - Account deletion from the profile menu
 - Responsive React frontend
 
@@ -40,7 +41,7 @@ The project lets admins upload company documents, manage access, and provide emp
 - Node.js 18+ recommended
 - MongoDB running locally or remotely
 - ChromaDB storage available in the workspace
-- Optional Cloudinary and Mistral credentials for full functionality
+- Optional Cloudinary, Mistral embedding, and Gemini chat credentials for full functionality
 
 ## Backend Setup
 
@@ -63,6 +64,8 @@ pip install -r ..\requirements.txt
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET_KEY=your_secret_key
 MISTRAL_API_KEY=your_mistral_api_key
+GROQ_API_KEY=your_groq_api_key
+GROQ_CHAT_MODEL=llama-3.3-70b-versatile
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_key
 CLOUDINARY_API_SECRET=your_cloudinary_secret
@@ -147,7 +150,7 @@ Deployment notes:
 
 - Do not bake `.env` files into the image. Pass secrets through `--env-file`, platform environment variables, or your hosting provider's secrets manager.
 - The frontend is built with `VITE_API_BASE_URL=/api`, so the browser calls the same deployed service for API requests.
-- The container expects MongoDB, Cloudinary, SMTP, and Mistral values in the runtime environment.
+- The container expects MongoDB, Cloudinary, SMTP, Mistral embedding, and Gemini chat values in the runtime environment.
 - `CHROMA_DB_PATH` defaults to `/app/chroma_db`; mount a volume there if you want indexed document chunks to survive container restarts.
 
 ## Common Pages
